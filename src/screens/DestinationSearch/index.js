@@ -1,35 +1,32 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useState } from 'react';
-import { FlatList, Pressable, Text, TextInput, View } from 'react-native';
-import Entypo from 'react-native-vector-icons/Entypo';
-import searchResults from '../../../assets/data/search';
+import React from 'react';
+import { View } from 'react-native';
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import { PLACES_API_KEY } from '../../../env';
 import styles from './styles';
+import SuggestionRow from './SuggestionRow';
 
 const DestinationSearchScreen = () => {
   const navigator = useNavigation();
-  const [destination, setDestination] = useState('');
   return (
     <View style={styles.container}>
-      {/* {Input compnent} */}
-      <TextInput
-        style={styles.textInput}
-        placeholder={'Where are you going?'}
-        value={destination}
-        onChangeText={setDestination}
-      />
-      {/* List of destinations */}
-      <FlatList
-        data={searchResults}
-        renderItem={({item}) => (
-          <Pressable
-            onPress={() => navigator.navigate('Guests')}
-            style={styles.row}>
-            <View style={styles.iconContainer}>
-              <Entypo name="location-pin" size={30} color={'black'} />
-            </View>
-            <Text style={styles.locationText}> {item.description}</Text>
-          </Pressable>
-        )}
+      <GooglePlacesAutocomplete
+        placeholder="Where are you going?"
+        onPress={(data, details = null) => {
+          // 'details' is provided when fetchDetails = true
+          console.log(data, details);
+          navigator.navigate('Guests');
+        }}
+        // styles={styles.textInput}
+        query={{
+          key: PLACES_API_KEY,
+          language: 'en',
+          type: '(cities)',
+        }}
+        debounce={500}
+        suppressDefaultStyles
+        fetchDetails
+        renderRow={(data) => <SuggestionRow item={data} />}
       />
     </View>
   );
