@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import styles from './styles';
@@ -27,14 +28,31 @@ const InputComponent = (text, helpText, counter, stateHandler) => {
 };
 
 const GuestScreen = () => {
+  const navigator = useNavigation();
   const [adultCount, setAdultCount] = useState(0);
   const [childCount, setChildCount] = useState(0);
   const [infantCount, setInfantCount] = useState(0);
   return (
-    <View>
-      {InputComponent('Adult', 'Age 13 or above', adultCount, setAdultCount)}
-      {InputComponent('Children', 'Age 2 - 12', childCount, setChildCount)}
-      {InputComponent('Infants', 'Under 2', infantCount, setInfantCount)}
+    <View style={{justifyContent: 'space-between', height: '100%'}}>
+      <View>
+        {InputComponent('Adult', 'Age 13 or above', adultCount, setAdultCount)}
+        {InputComponent('Children', 'Age 2 - 12', childCount, setChildCount)}
+        {InputComponent('Infants', 'Under 2', infantCount, setInfantCount)}
+      </View>
+
+      <Pressable
+        onPress={() => navigator.navigate('Home')}
+        style={{
+          marginBottom: 20,
+          backgroundColor: '#f15454',
+          alignItems: 'center',
+          justifyContent: 'center',
+          height: 50,
+          marginHorizontal: 20,
+          borderRadius: 10,
+        }}>
+        <Text>Search</Text>
+      </Pressable>
     </View>
   );
 };
