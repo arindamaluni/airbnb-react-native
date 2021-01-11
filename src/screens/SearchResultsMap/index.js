@@ -11,10 +11,10 @@ const SearchResultsMap = () => {
   const [selectedPlaceId, setSelectedPlaceId] = useState(null);
   const flatList = useRef();
   const mapRef = useRef();
-  const viewConfig = useRef({itemVisiblePercentThreshold: 70});
-  const onViewChanged = useRef(({viewableItems}) => {
+  const viewConfig = useRef({ itemVisiblePercentThreshold: 70 });
+  const onViewChanged = useRef(({ viewableItems }) => {
     if (viewableItems.length > 0) {
-      console.log(viewableItems[0].item.id);
+      // console.log(viewableItems[0].item.id);
       setSelectedPlaceId(() => viewableItems[0].item.id);
     }
   });
@@ -24,7 +24,7 @@ const SearchResultsMap = () => {
       return;
     }
     const index = places.findIndex((place) => place.id === selectedPlaceId);
-    flatList.current.scrollToIndex({index});
+    flatList.current.scrollToIndex({ index });
 
     const currentPlace = places[index];
     const region = {
@@ -37,10 +37,10 @@ const SearchResultsMap = () => {
   }, [selectedPlaceId]);
 
   return (
-    <View style={{height: '100%', width: '100%'}}>
+    <View style={{ height: '100%', width: '100%' }}>
       <MapView
         ref={mapRef}
-        style={{height: '100%', width: '100%'}}
+        style={{ height: '100%', width: '100%' }}
         provider={PROVIDER_GOOGLE} //Req for running google in iOS
         initialRegion={{
           latitude: 28.2515637,
@@ -58,12 +58,12 @@ const SearchResultsMap = () => {
           />
         ))}
       </MapView>
-      <View style={{position: 'absolute', bottom: 10}}>
+      <View style={{ position: 'absolute', bottom: 10 }}>
         {/* <PostCarouselItem post={places[0]} /> */}
         <FlatList
           ref={flatList}
           data={places}
-          renderItem={({item}) => <PostCarouselItem post={item} />}
+          renderItem={({ item }) => <PostCarouselItem post={item} />}
           horizontal
           showHorizontalScrollIndicator={false}
           snapToInterval={width - 60}

@@ -5,8 +5,8 @@ import Feather from 'react-native-vector-icons/Feather';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import HomeScreen from '../screens/Home';
-// import ExploreNavigator from './ExploreNavigator';
-import SearchResultsMap from '../screens/SearchResultsMap';
+// import PostDetailsScreen from '../screens/PostDetails';
+import ExploreNavigator from './ExploreNavigator';
 
 const Tab = createBottomTabNavigator();
 
@@ -18,10 +18,10 @@ const HomeTabNavigator = () => {
       }}>
       <Tab.Screen
         name={'Explore'}
-        component={SearchResultsMap}
-        // component={ExploreNavigator}
+        // component={PostDetailsScreen}
+        component={ExploreNavigator}
         options={{
-          tabBarIcon: ({color}) => (
+          tabBarIcon: ({ color }) => (
             <Fontisto name="search" size={25} color={color} />
           ),
         }}
@@ -30,7 +30,7 @@ const HomeTabNavigator = () => {
         name={'Saved'}
         component={HomeScreen}
         options={{
-          tabBarIcon: ({color}) => (
+          tabBarIcon: ({ color }) => (
             <FontAwesome5 name="heart" size={25} color={color} />
           ),
         }}
@@ -39,7 +39,7 @@ const HomeTabNavigator = () => {
         name={'Airbnb'}
         component={HomeScreen}
         options={{
-          tabBarIcon: ({color}) => (
+          tabBarIcon: ({ color }) => (
             <FontAwesome5 name="airbnb" size={25} color={color} />
           ),
         }}
@@ -48,7 +48,7 @@ const HomeTabNavigator = () => {
         name={'Messages'}
         component={HomeScreen}
         options={{
-          tabBarIcon: ({color}) => (
+          tabBarIcon: ({ color }) => (
             <Feather name="message-square" size={25} color={color} />
           ),
         }}
@@ -57,7 +57,7 @@ const HomeTabNavigator = () => {
         name={'Profile'}
         component={HomeScreen}
         options={{
-          tabBarIcon: ({color}) => (
+          tabBarIcon: ({ color }) => (
             <EvilIcons name="user" size={25} color={color} />
           ),
         }}
