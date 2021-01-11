@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import places from '../../../assets/data/feed';
 import CustomMarker from '../../components/CustomMarker';
+import PostCarouselItem from '../../components/PostCarrouselItem';
 
 const SearchResultsMap = () => {
   const [selectedPlaceId, setSelectedPlaceId] = useState(null);
@@ -28,6 +29,9 @@ const SearchResultsMap = () => {
           />
         ))}
       </MapView>
+      <View style={{position: 'absolute', bottom: 10}}>
+        <PostCarouselItem post={places[0]} />
+      </View>
     </View>
   );
 };
