@@ -59,3 +59,5 @@ buck-out/
 /ios/Pods/
 
 env.js
+**/app/src/main/res/*
+**/app/src/main/assets/*
