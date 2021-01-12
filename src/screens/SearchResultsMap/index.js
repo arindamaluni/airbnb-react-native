@@ -7,12 +7,17 @@ import CustomMarker from '../../components/CustomMarker';
 import PostCarouselItem from '../../components/PostCarrouselItem';
 import { listPosts } from '../../graphql/queries';
 
-const SearchResultsMap = () => {
+const SearchResultsMap = (props) => {
+  const { guests } = props;
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const postsResult = await API.graphql(graphqlOperation(listPosts));
+        const postsResult = await API.graphql(
+          graphqlOperation(listPosts, {
+            filter: { maxGuests: { ge: guests } },
+          }),
+        );
         console.log(postsResult);
         setPosts(postsResult.data.listPosts.items);
       } catch (err) {

@@ -7,16 +7,16 @@ const InputComponent = (text, helpText, counter, stateHandler) => {
   return (
     <View style={styles.row}>
       <View>
-        <Text style={{fontWeight: 'bold'}}> {text} </Text>
-        <Text style={{color: '#8d8d8d'}}> {helpText} </Text>
+        <Text style={{ fontWeight: 'bold' }}> {text} </Text>
+        <Text style={{ color: '#8d8d8d' }}> {helpText} </Text>
       </View>
-      <View style={{flexDirection: 'row', alignItems: 'center'}}>
+      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         <Pressable
           onPress={() => stateHandler((old) => (old > 0 ? old - 1 : 0))}
           style={styles.button}>
           <Text>-</Text>
         </Pressable>
-        <Text style={{marginHorizontal: 20, fontSize: 16}}>{counter}</Text>
+        <Text style={{ marginHorizontal: 20, fontSize: 16 }}>{counter}</Text>
         <Pressable
           onPress={() => stateHandler((old) => old + 1)}
           style={styles.button}>
@@ -33,7 +33,7 @@ const GuestScreen = () => {
   const [childCount, setChildCount] = useState(0);
   const [infantCount, setInfantCount] = useState(0);
   return (
-    <View style={{justifyContent: 'space-between', height: '100%'}}>
+    <View style={{ justifyContent: 'space-between', height: '100%' }}>
       <View>
         {InputComponent('Adult', 'Age 13 or above', adultCount, setAdultCount)}
         {InputComponent('Children', 'Age 2 - 12', childCount, setChildCount)}
@@ -46,6 +46,10 @@ const GuestScreen = () => {
             screen: 'Explore',
             params: {
               screen: 'SearchResults',
+              params: {
+                screen: 'List',
+                guests: adultCount + childCount,
+              },
             },
           })
         }
