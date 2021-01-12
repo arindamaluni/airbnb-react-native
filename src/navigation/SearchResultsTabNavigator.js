@@ -35,7 +35,7 @@ const SearchResultsTabNavigator = () => {
       }
     };
     fetchPosts();
-  }, []);
+  }, [guests, viewport]);
 
   return (
     <Tab.Navigator
