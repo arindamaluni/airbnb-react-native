@@ -12,7 +12,7 @@ import styles from './styles';
 const PostCarouselItem = ({ post }) => {
   const navigation = useNavigation();
   const goToPostDetails = () => {
-    navigation.navigate('PostDetails', { postId: post.id });
+    navigation.navigate('PostDetails', { post });
   };
   const width = useWindowDimensions().width;
   return (
@@ -33,9 +33,6 @@ const PostCarouselItem = ({ post }) => {
           </Text>
           {/* Old & New Price */}
           <Text style={styles.newPrice}>${post.newPrice}/ night </Text>
-          {/* <Text style={styles.prices}>
-            <Text style={styles.oldPrice}>${post.oldPrice} </Text>
-          </Text> */}
         </View>
       </View>
     </Pressable>

@@ -1,31 +1,12 @@
-import { API, graphqlOperation } from 'aws-amplify';
 import React, { useEffect, useRef, useState } from 'react';
 import { useWindowDimensions, View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import CustomMarker from '../../components/CustomMarker';
 import PostCarouselItem from '../../components/PostCarrouselItem';
-import { listPosts } from '../../graphql/queries';
 
 const SearchResultsMap = (props) => {
-  const { guests } = props;
-  const [posts, setPosts] = useState([]);
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const postsResult = await API.graphql(
-          graphqlOperation(listPosts, {
-            filter: { maxGuests: { ge: guests } },
-          }),
-        );
-        console.log(postsResult);
-        setPosts(postsResult.data.listPosts.items);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchPosts();
-  }, []);
+  const { posts } = props;
   const width = useWindowDimensions().width;
   const [selectedPlaceId, setSelectedPlaceId] = useState(null);
   const flatList = useRef();
@@ -78,7 +59,6 @@ const SearchResultsMap = (props) => {
         ))}
       </MapView>
       <View style={{ position: 'absolute', bottom: 10 }}>
-        {/* <PostCarouselItem post={posts[0]} /> */}
         <FlatList
           ref={flatList}
           data={posts}

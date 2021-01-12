@@ -1,4 +1,4 @@
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import styles from './styles';
@@ -29,6 +29,8 @@ const InputComponent = (text, helpText, counter, stateHandler) => {
 
 const GuestScreen = () => {
   const navigator = useNavigation();
+  const route = useRoute();
+
   const [adultCount, setAdultCount] = useState(0);
   const [childCount, setChildCount] = useState(0);
   const [infantCount, setInfantCount] = useState(0);
@@ -49,6 +51,7 @@ const GuestScreen = () => {
               params: {
                 screen: 'List',
                 guests: adultCount + childCount,
+                viewport: route.params.viewport,
               },
             },
           })

@@ -14,8 +14,8 @@ const DestinationSearchScreen = () => {
         placeholder="Where are you going?"
         onPress={(data, details = null) => {
           // 'details' is provided when fetchDetails = true
-          console.log(data, details);
-          navigator.navigate('Guests');
+          // console.log(data, details);
+          navigator.navigate('Guests', { viewport: details.geometry.viewport });
         }}
         // styles={styles.textInput}
         query={{
