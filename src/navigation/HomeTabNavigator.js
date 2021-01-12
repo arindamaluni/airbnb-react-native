@@ -5,6 +5,7 @@ import Feather from 'react-native-vector-icons/Feather';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import HomeScreen from '../screens/Home';
+import ProfileScreen from '../screens/Profile';
 // import PostDetailsScreen from '../screens/PostDetails';
 import ExploreNavigator from './ExploreNavigator';
 
@@ -55,7 +56,7 @@ const HomeTabNavigator = () => {
       />
       <Tab.Screen
         name={'Profile'}
-        component={HomeScreen}
+        component={ProfileScreen}
         options={{
           tabBarIcon: ({ color }) => (
             <EvilIcons name="user" size={25} color={color} />
