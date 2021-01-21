@@ -14,9 +14,6 @@
   <img width="150" height="266" src="https://github.com/arindamaluni/airbnb-react-native/blob/main/assets/search-map.jpg">
   <img width="150" height="266" src="https://github.com/arindamaluni/airbnb-react-native/blob/main/assets/details.jpg">
 </p>
-![]()
-![](https://)
-![](https://)
 
 # Getting Started
 
